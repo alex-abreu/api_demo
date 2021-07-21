@@ -39,4 +39,128 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.get('/pix/payments/:id', (req, res, next) => {
+ 
+  res.status(200).send({
+    
+      data: {
+        "paymentId": "string",
+        "endToEndId": "stringstringstringstringstringst",
+        "consentId": "string",
+        "creationDateTime": "2021-07-21T17:11:12.589Z",
+        "statusUpdateDateTime": "2021-07-21T17:11:12.589Z",
+        "proxy": "string",
+        "status": "PDNG",
+        "rejectionReason": "ABORTED_SETTLEMENT_TIMEOUT",
+        "payment": {
+          "amount": "string",
+          "currency": "str"
+        },
+        "remittanceInformation": "string",
+        "creditorAccount": {
+          "ispb": "stringst",
+          "issuer": "stri",
+          "number": "string",
+          "accountType": "CACC"
+        }
+      },
+      "links": {
+        "self": "string"
+      },
+      "meta": {
+        "totalRecords": 0,
+        "totalPages": 0,
+        "requestDateTime": "2021-07-21T17:11:12."
+      }
+    
+  });
+});
+
+router.get('/pix/payments', (req, res, next) => {
+  res.status(200).send({
+    
+      data: {
+        "paymentId": "string",
+        "endToEndId": "stringstringstringstringstringst",
+        "consentId": "string",
+        "creationDateTime": "2021-07-21T16:48:26.465Z",
+        "statusUpdateDateTime": "2021-07-21T16:48:26.465Z",
+        "proxy": "string",
+        "status": "PDNG",
+        "rejectionReason": "ABORTED_SETTLEMENT_TIMEOUT",
+        "payment": {
+          "amount": "string",
+          "currency": "str"
+        },
+        "remittanceInformation": "string",
+        "creditorAccount": {
+          "ispb": "stringst",
+          "issuer": "stri",
+          "number": "string",
+          "accountType": "CACC"
+        }
+      },
+      "links": {
+        "self": "string"
+      },
+      "meta": {
+        "totalRecords": 0,
+        "totalPages": 0,
+        "requestDateTime": "2021-07-21T16:48:26."
+      }
+    
+  });
+});
+
+router.get('/consents/:id', (req, res, next) => {
+  res.status(200).send({
+    data: {
+      "consentId": "string",
+      "creationDateTime": "2021-07-21T17:09:57.",
+      "expirationDateTime": "2021-07-21T17:09:57.",
+      "statusUpdateDateTime": "2021-07-21T17:09:57.",
+      "status": "AWAITING_AUTHORISATION",
+      "loggedUser": {
+        "document": {
+          "identification": "string",
+          "rel": "str"
+        }
+      },
+      "businessEntity": {
+        "document": {
+          "identification": "string",
+          "rel": "stri"
+        }
+      },
+      "creditor": {
+        "personType": "PESSOA_NATURAL",
+        "cpfCnpj": "stringstrin",
+        "name": "string"
+      },
+      "payment": {
+        "type": "PIX",
+        "date": "2021-07-21",
+        "currency": "str",
+        "amount": "string"
+      },
+      "debtorAccount": {
+        "ispb": "stringst",
+        "issuer": "stri",
+        "number": "string",
+        "accountType": "CACC"
+      }
+    },
+    "links": {
+      "self": "string"
+    },
+    "meta": {
+      "totalRecords": 0,
+      "totalPages": 0,
+      "requestDateTime": "2021-07-21T17:09:57."
+    }
+ 
+  });
+});
+
+
 module.exports = router;
