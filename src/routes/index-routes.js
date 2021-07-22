@@ -130,61 +130,171 @@ router.get('/pix/payments', (req, res, next) => {
   });
 });
 
-router.get('/consents', (req, res, next) => {
+router.get('/consents/construct', (req, res, next) => {
+  setTimeout((() => {
   res.status(200).send({
     data : [
       {
-        itemId: 1,
-        detailView: "DetailConsent",
-        cardStatus: "waiting",
-        infoMessage: "Aqui são exibidos os consentimentos que ainda não foram aprovados e estão no prazo de validade. Para aprová-lo, você deve seguir com a solicitação na Iniciadora de Pagamentos.",
-        cardStatusTitle: "Aguardando aprovação",
-        cardStatusDescription: "Limite para aprovação: 13/05/2021 - 15:32",
-        payerCpf: "123.456.789-00",
-        payerName: "Marco Antonio Brito",
-        payerCc: "12345-5",
-        beneficiaryCnpj: "123.456.78/0001-40",
-        beneficiaryname: "Magazine Luiza",
-        paymentIniciationData: "19/05/2021",
-        value: "R$ 1.000,00",
-        formOfPayment: "Pix"
+        consentId: 1,
+        
       },
       {
-        itemId: 2,
-        detailView: "DetailConsent",
-        cardStatus: "consumed",
-        infoMessage: "Aqui são exibidos os consentimentos que você aprovou para pagamentos. Para verificar se o pagamento foi relizado, é necessário consultar sua movimentação bancária.",
-        cardStatusTitle: "Consumido",
-        cardStatusDescription: "Aprovação: 13/05/2021 - 15:32",
-        payerCpf: "123.456.789-00",
-        payerName: "Marco Antonio Brito",
-        payerCc: "12345-5",
-        beneficiaryCnpj: "123.456.78/0001-40",
-        beneficiaryname: "Magazine Luiza",
-        paymentIniciationData: "19/05/2021",
-        value: "R$ 1.000,00",
-        formOfPayment: "Pix"
+        consentId: 2,
+        
       },
       {
-        itemId: 4,
-        detailView: "DetailConsent",
-        cardStatus: "rejected",
-        infoMessage: "Aqui são exibidos os consentimentos que você não aprovou.",
-        cardStatusTitle: "Rejeitado",
-        cardStatusDescription: "Rejeição: 13/05/2021 - 15:32",
-        payerCpf: "123.456.789-00",
-        payerName: "Marco Antonio Brito",
-        payerCc: "12345-5",
-        beneficiaryCnpj: "123.456.78/0001-40",
-        beneficiaryname: "Magazine Luiza",
-        paymentIniciationData: "19/05/2021",
-        value: "R$ 1.000,00",
-        formOfPayment: "Pix"
+        consentId: 4,
+       
       },
     ]
  
   });
+}), 50)
+});
+router.get('/consents/:id', (req, res, next) => {
+  setTimeout((() => {
+  res.status(200).send({
+    dat:[
+      {
+        "data":{
+          "consentId": "1",
+          "creationDateTime": "2021-07-22T12:44:02.",
+          "expirationDateTime": "2021-09-22T12:44:02.",
+          "statusUpdateDateTime": "2021-07-22T12:44:02.",
+          "status": "AWAITING_AUTHORISATION",
+        },
+        "payment": {
+          "type": "PIX",
+          "date": "2021-07-22",
+          "currency": "R$",
+          "amount": "1000"
+      },
+      "creditor": {
+        "personType": "PESSOA_NATURAL",
+        "cpfCnpj": "12312312355",
+        "name": "Magazine Luiza"
+      },
+      "debtorAccount": {
+        "ispb": "stringst",
+        "issuer": "stri",
+        "number": "654654654",
+        "accountType": "CACC"
+      }
+    },
+      {
+        "data":{
+          "consentId": "2",
+          "creationDateTime": "2021-07-22T12:44:02.",
+          "expirationDateTime": "2021-07-22T12:44:02.",
+          "statusUpdateDateTime": "2021-07-22T12:48:02.",
+          "status": "consumed",
+        },
+        "payment": {
+          "type": "PIX",
+          "date": "2021-07-22",
+          "currency": "R$",
+          "amount": "800"
+      },
+      "creditor": {
+        "personType": "PESSOA_NATURAL",
+        "cpfCnpj": "12312312355",
+        "name": "Amazon"
+      },
+      "debtorAccount": {
+        "ispb": "stringst",
+        "issuer": "stri",
+        "number": "654654654",
+        "accountType": "CACC"
+      }
+      },
+      {
+        "data":{
+          "consentId": "4",
+          "creationDateTime": "2021-07-22T12:44:02.",
+          "expirationDateTime": "2021-07-22T12:44:02.",
+          "statusUpdateDateTime": "2021-07-22T12:49:02.",
+          "status": "rejected",
+        }, "payment": {
+          "type": "PIX",
+          "date": "2021-07-22",
+          "currency": "R$",
+          "amount": "350"
+      },"creditor": {
+        "personType": "PESSOA_NATURAL",
+        "cpfCnpj": "12312312355",
+        "name": "Americanas"
+      },
+      "debtorAccount": {
+        "ispb": "stringst",
+        "issuer": "stri",
+        "number": "654654654",
+        "accountType": "CACC"
+      }
+      ,
+      }
+    ]
+ 
+  });
+}), 50)
 });
 
+router.get('/consents', (req, res, next) => {
+  setTimeout((() => {
+  res.status(200).send({
+    
+ data : [
+  {
+    itemId: 1,
+    detailView: "DetailConsent",
+    cardStatus: "waiting",
+    infoMessage: "Aqui são exibidos os consentimentos que ainda não foram aprovados e estão no prazo de validade. Para aprová-lo, você deve seguir com a solicitação na Iniciadora de Pagamentos.",
+    cardStatusTitle: "Aguardando aprovação",
+    cardStatusDescription: "Limite para aprovação: 13/05/2021 - 15:32",
+    payerCpf: "123.456.789-00",
+    payerName: "Marco Antonio Brito",
+    payerCc: "12345-5",
+    beneficiaryCnpj: "123.456.78/0001-40",
+    beneficiaryname: "Magazine Luiza",
+    paymentIniciationData: "19/05/2021",
+    value: "R$ 1.000,00",
+    formOfPayment: "Pix"
+  },
+  {
+    itemId: 2,
+    detailView: "DetailConsent",
+    cardStatus: "consumed",
+    infoMessage: "Aqui são exibidos os consentimentos que você aprovou para pagamentos. Para verificar se o pagamento foi relizado, é necessário consultar sua movimentação bancária.",
+    cardStatusTitle: "Consumido",
+    cardStatusDescription: "Aprovação: 13/05/2021 - 15:32",
+    payerCpf: "123.456.789-00",
+    payerName: "Marco Antonio Brito",
+    payerCc: "12345-5",
+    beneficiaryCnpj: "123.456.78/0001-40",
+    beneficiaryname: "Magazine Luiza",
+    paymentIniciationData: "19/05/2021",
+    value: "R$ 1.000,00",
+    formOfPayment: "Pix"
+  },
+  {
+    itemId: 4,
+    detailView: "DetailConsent",
+    cardStatus: "rejected",
+    infoMessage: "Aqui são exibidos os consentimentos que você não aprovou.",
+    cardStatusTitle: "Rejeitado",
+    cardStatusDescription: "Rejeição: 13/05/2021 - 15:32",
+    payerCpf: "123.456.789-00",
+    payerName: "Marco Antonio Brito",
+    payerCc: "12345-5",
+    beneficiaryCnpj: "123.456.78/0001-40",
+    beneficiaryname: "Magazine Luiza",
+    paymentIniciationData: "19/05/2021",
+    value: "R$ 1.000,00",
+    formOfPayment: "Pix"
+  },
+]
+ 
+  });
+}), 5000)
+});
 
 module.exports = router;
